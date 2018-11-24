@@ -21,8 +21,8 @@ namespace ConwaysGameOfLife
 
         public Game()
         {
-            height = Console.WindowHeight;
-            width = Console.WindowWidth;
+            height = Console.WindowHeight - 1;
+            width = Console.WindowWidth - 1;
             cells = new Cell[height, width];
             nextStates = new bool[height, width];
 
@@ -33,7 +33,7 @@ namespace ConwaysGameOfLife
                 for (int j = 0; j < width; j++)
                 {
                     cells[i, j] = new Cell(new Point(j, i));
-                    int random = rnd.Next(1, 9);
+                    int random = rnd.Next(1, 10);
                     if (random == 1)
                         cells[i, j].alive = true;
                     cells[i, j].Draw();
@@ -53,7 +53,7 @@ namespace ConwaysGameOfLife
         }
         public void Run()
         {
-
+            int genCount = 0;
             while (true)
             {
 
@@ -88,7 +88,9 @@ namespace ConwaysGameOfLife
                         cells[i, j].Draw();
                     }
                 }
-
+                Console.SetCursorPosition(0, Console.WindowHeight - 1);
+                Console.Write($"Randomly generated start in toroidal array.   |   Generation : {genCount}");
+                genCount++;
             }
         }
 

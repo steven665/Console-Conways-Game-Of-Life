@@ -33,7 +33,7 @@ namespace ConwaysGameOfLife
         {
             if (alive)
             {
-                rep = 'X';
+                rep = 'x';
             }
             else
             {
